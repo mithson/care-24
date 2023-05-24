@@ -8,7 +8,7 @@ Preview this project at https://mithson.github.io/care-24/ it is reponsive with 
 Clone the project
 
 ```bash
-  git clone https://github.com/care-24.git
+  git clone https://github.com/mithson/care-24.git
 ```
 
 Go to the project directory
