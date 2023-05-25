@@ -95,15 +95,17 @@ const Button = styled.button`
   background-color: ${({ highlighted }) => (highlighted ? '#e8f6ff' : 'white')};
   color: ${({ highlighted }) => (highlighted ? 'blue' : 'black')};
   &::after {
-    content: "\2714"; /* Unicode for the tick mark */
+    content: ${({ highlighted }) => (highlighted ? '"\u2714"' : '')}; /* Unicode for the tick mark */
     position: absolute;
     top: -10px;
     right: -10px;
     width: 20px;
     height: 20px;
+    border: 1px solid blue; /* Add border styles */
+    box-sizing: content-box;
     border-radius: 50%;
-    background-color: #00ff00;
-    color: #fff;
+    background-color: white;
+    color: e8f6ff; // blue tick color
     text-align: center;
     font-weight: bold;
     line-height: 20px;
