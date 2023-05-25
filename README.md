@@ -1,6 +1,8 @@
 
 # Care 24 ReactJS Interview Task
 
+Preview this project at https://mithson.github.io/care-24/ it is reponsive with mobile and website both 
+
 ## To Run Locally 
 
 Clone the project
