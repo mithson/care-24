@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/care-24/static/css/main.e9ba9e12.css",
-    "main.js": "/care-24/static/js/main.f29df0d5.js",
+    "main.js": "/care-24/static/js/main.17ce343a.js",
     "index.html": "/care-24/index.html",
     "main.e9ba9e12.css.map": "/care-24/static/css/main.e9ba9e12.css.map",
-    "main.f29df0d5.js.map": "/care-24/static/js/main.f29df0d5.js.map"
+    "main.17ce343a.js.map": "/care-24/static/js/main.17ce343a.js.map"
   },
   "entrypoints": [
     "static/css/main.e9ba9e12.css",
-    "static/js/main.f29df0d5.js"
+    "static/js/main.17ce343a.js"
   ]
 }
