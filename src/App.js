@@ -8,7 +8,7 @@ const BackButton = styled.button`
   border: none;
   cursor: pointer;
   position: absolute;
-  left: 0rem;
+  left: 0.5rem;
 `;
 
 

@@ -48,12 +48,12 @@ align-content: center;
 justify-content: center;
 margin: 2rem auto;
 max-width: 40rem;
-
+// background-color: red;
 
 @media (max-width: 768px) {
     // background-color: red;
-    margin: 2rem 0.5rem;
-    min-width: 20rem;
+    margin: 2rem auto;
+    max-width: 40rem;
     // background-color: lightblue;
   }
 `;
@@ -65,10 +65,10 @@ const Column = styled.div`
   padding-bottom: 1rem;
   border-radius: 3px;
   border: 1px solid ${({ highlighted }) => (highlighted ? 'blue' : 'white')};
-  background-color: ${({ highlighted }) => (highlighted ? 'lightblue' : 'white')};
+  background-color: ${({ highlighted }) => (highlighted ? '#e8f6ff' : 'white')};
   color: ${({ highlighted }) => (highlighted ? 'black' : 'grey')};
   @media (max-width: 768px) {
-    margin: 0rem 0.5rem;
+    margin: 0rem 0.6rem;
     min-width: 4rem;
   }
 `;
@@ -85,13 +85,29 @@ const ButtonGroup = styled.div`
 
 const Button = styled.button`
   min-width: 20px;
+  position: relative;
   font-weight: 700;
   padding: 1rem 1.5rem;
+  cursor: pointer;
   margin: 0 0.5rem;
   border: 1px solid ${({ highlighted }) => (highlighted ? 'blue' : 'black')} ;
   border-radius: 3px;
   background-color: ${({ highlighted }) => (highlighted ? '#e8f6ff' : 'white')};
   color: ${({ highlighted }) => (highlighted ? 'blue' : 'black')};
+  &::after {
+    content: "\2714"; /* Unicode for the tick mark */
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #00ff00;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    line-height: 20px;
+  }
   media (max-width: 768px){
     margin: 0rem;
     padding: 1rem 2rem;
@@ -111,10 +127,12 @@ top: 2.3rem;
 @media (max-width: 768px) {
     // background-color: red;
     position: relative;
-    padding-left: 0rem;
+    padding-left: 0.5rem;
     padding-right: 1rem;
 }
 `;
+
+const AmountDesc = styled.div`white-space: nowrap;`;
 
 const BgDark = styled.div`
   white-space:nowrap;
@@ -130,79 +148,81 @@ ${({ highlighted }) => (highlighted ? "font-weight:700;" : '')}
 
 
 const Payment = () => {
-    const [highlightedColumn, setHighlightedColumn] = useState(null);
+  const [highlightedColumn, setHighlightedColumn] = useState(null);
 
-    const handleButtonClick = (columnIndex) => {
-        setHighlightedColumn(columnIndex);
-    };
+  const handleButtonClick = (columnIndex) => {
+    setHighlightedColumn(columnIndex);
+  };
 
-    return (
-        <div>
+  return (
+    <div>
 
-            <Container>
+      <Container>
 
-                <div className="column">
-                    <DescContent>
-                        <p>Per Day Price</p>
-                        <p>Total Savings</p>
-                        <b>Total Amount</b>
-                    </DescContent>
-                </div>
-
-                <Column highlighted={highlightedColumn === 1}>
-                    <BgDark highlighted={highlightedColumn === 1}>7 Days</BgDark>
-                    <p>₹ 7000</p>
-                    <p>₹ 700</p>
-                    <Total highlighted={highlightedColumn === 1}>₹ 6300</Total>                </Column>
-                <Column highlighted={highlightedColumn === 2}>
-                    <BgDark highlighted={highlightedColumn === 2}>15 Days</BgDark>
-                    <p>₹ 15000</p>
-                    <p>₹ 2250</p>
-                    <Total highlighted={highlightedColumn === 2}>₹ 12750</Total>
-                </Column>
-                <Column highlighted={highlightedColumn === 3}>
-                    <BgDark highlighted={highlightedColumn === 3}>30 Days</BgDark>
-                    <p>₹ 30000</p>
-                    <p>₹ 6000</p>
-                    <Total highlighted={highlightedColumn === 3}>₹ 24000</Total>
-                </Column>
-            </Container>
-
-            <ButtonGroup>
-                <Button
-                    highlighted={highlightedColumn === 1}
-                    onClick={() => handleButtonClick(1)}
-                >
-                    7 Days
-                </Button>
-                <Button
-                    highlighted={highlightedColumn === 2}
-                    onClick={() => handleButtonClick(2)}
-                >
-                    15 Days
-                </Button>
-                <Button
-                    highlighted={highlightedColumn === 3}
-                    onClick={() => handleButtonClick(3)}
-                >
-                    30 Days
-                </Button>
-            </ButtonGroup>
-            <br />
-            <PayButton>
-                <ButtonText>Pay with UPI</ButtonText>
-                <ButtonIcon />
-            </PayButton>
-            <p>OR</p>
-            <PayButton>
-                <ButtonText>Pay with other options</ButtonText>
-                <ButtonIcon />
-            </PayButton>
-            <Caps>* Terms and Conditions Applied</Caps>
-            <br />
-            <br />
+        <div className="column">
+          <DescContent>
+            <p>Per Day Price</p>
+            <p>Total Savings</p>
+            <b>Total Amount</b>
+          </DescContent>
         </div>
-    );
+
+        <Column highlighted={highlightedColumn === 1}>
+          <AmountDesc>
+            <BgDark highlighted={highlightedColumn === 1}>7 Days</BgDark>
+            <p>₹ 7000</p>
+            <p>₹ 700</p>
+            <Total highlighted={highlightedColumn === 1}>₹ 6300</Total> </AmountDesc>               </Column>
+        <Column highlighted={highlightedColumn === 2}>
+          <AmountDesc>
+          <BgDark highlighted={highlightedColumn === 2}>15 Days</BgDark>
+          <p>₹ 15000</p>
+          <p>₹ 2250</p>
+          <Total highlighted={highlightedColumn === 2}>₹ 12750</Total></AmountDesc>
+        </Column>
+        <Column highlighted={highlightedColumn === 3}><AmountDesc>
+          <BgDark highlighted={highlightedColumn === 3}>30 Days</BgDark>
+          <p>₹ 30000</p>
+          <p>₹ 6000</p>
+          <Total highlighted={highlightedColumn === 3}>₹ 24000</Total></AmountDesc>
+        </Column>
+      </Container>
+
+      <ButtonGroup>
+        <Button
+          highlighted={highlightedColumn === 1}
+          onClick={() => handleButtonClick(1)}
+        >
+          7 Days
+        </Button>
+        <Button
+          highlighted={highlightedColumn === 2}
+          onClick={() => handleButtonClick(2)}
+        >
+          15 Days
+        </Button>
+        <Button
+          highlighted={highlightedColumn === 3}
+          onClick={() => handleButtonClick(3)}
+        >
+          30 Days
+        </Button>
+      </ButtonGroup>
+      <br />
+      <PayButton>
+        <ButtonText>Pay with UPI</ButtonText>
+        <ButtonIcon />
+      </PayButton>
+      <p>OR</p>
+      <PayButton>
+        <ButtonText>Pay with other options</ButtonText>
+        <ButtonIcon />
+      </PayButton>
+      <Caps>* Terms and Conditions Applied</Caps>
+      <br />
+      <br />
+    </div>
+  );
 };
 
 export default Payment;

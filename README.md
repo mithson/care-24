@@ -6,7 +6,7 @@
 Clone the project
 
 ```bash
-  git clone https://github.com/care-24.git
+  git clone https://github.com/mithson/care-24.git
 ```
 
 Go to the project directory
